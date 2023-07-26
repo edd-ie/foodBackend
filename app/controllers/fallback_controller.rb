@@ -1,5 +1,5 @@
 class FallbackController < ApplicationController
-    def index
+    def home
         render file: 'public/home.html'
     end
 
