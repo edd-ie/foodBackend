@@ -36,7 +36,7 @@ class CustomersController < ApplicationController
     end
 
     def valid_params
-        params.permit(:id, :username, :password, :password_confirmation, :phone, :policy, :picture)
+        params.permit(:id, :username, :email, :password, :password_confirmation, :phone, :policy, :picture)
     end
 
     def no_records
