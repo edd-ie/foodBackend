@@ -38,8 +38,3 @@ tmp
 Gemfile.lock
 db/development.sqlite3
 log/development.log
-tmp
-Gemfile.lock
-config/puma.rb
-db/development.sqlite3
-log/development.log
