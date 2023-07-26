@@ -1,3 +1,9 @@
 class StaffSerializer < ActiveModel::Serializer
-  attributes :id, :name, :title, :restaurant_id, :active
+  attributes :id, :name, :email, :title, :restaurant_id, :active
+
+
+  def active
+    object.active?
+  end
+  
 end
