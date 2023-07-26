@@ -1,5 +1,3 @@
-# app/models/staff.rb
-
 class Staff < ApplicationRecord
     belongs_to :restaurant
     has_secure_password
