@@ -1,5 +1,5 @@
 class Inventory < ApplicationRecord
     belongs_to :restaurant
     
-    validates :items, :quantity, :restaurant_id, presence: true
+    #validates :item, :quantity, :restaurant_id, presence: true
 end

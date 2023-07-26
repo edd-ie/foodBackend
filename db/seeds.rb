@@ -11,15 +11,15 @@ puts "Seeding Data ...🌱🌱🌱"
 #     phone: "0123456789", policy: true, picture: "https://th.bing.com/th/id/OIP.SKcexVoRNnffvOMny6sSvAHaDt?pid=ImgDet&rs=1"
 # )
 
-# Restaurant.create(name: "Restaurant1", email: "res@gmail.com", password: "1234", password_confirmation: "1234",
-#     phone: "0123456789", policy: true, till_num:160580, ambience:"classy", ratings: 4,
-#     sales: 0, cuisine: "Chinese", price_range: "$$",
-#     picture: "https://th.bing.com/th/id/R.cedfefd8e352d0aa0032a17d67d83c2a?rik=ThkhfDVxcANZHw&pid=ImgRaw&r=0",
-#     latitude: -1.298300, longitude: 36.801060
-# )
+Restaurant.create(name: "Restaurant1", email: "res@gmail.com", password: "1234",
+    phone: "0123456789", policy: true, till_num:160580, ambience:"classy", ratings: 4,
+    sales: 0, cuisine: "Chinese", price_range: "$$",
+    picture: "https://th.bing.com/th/id/R.cedfefd8e352d0aa0032a17d67d83c2a?rik=ThkhfDVxcANZHw&pid=ImgRaw&r=0",
+    latitude: -1.298300, longitude: 36.801060
+)
 
-cat = ['Burgers', 'Fries', 'Sides', 'Main', 'Desserts']
-n = 0
+# cat = ['Burgers', 'Fries', 'Sides', 'Main', 'Desserts']
+# n = 0
 # 5.times do
 #     Food.create(
 #         name: Faker::Food.dish,
@@ -56,24 +56,53 @@ n = 0
 # end
 
 
-2.times do
-    x = Order.new(
-        items:['cheeseburger','Arepas'],
-        discount: 0,
-        latitude: -1.198300,
-        longitude: 36.801060,
-        restaurant_id: 1,
-        customer_id: 1,
-        food_id: [7,6],
-        service_fee: 50,
-        total: 1200,
-    )
-    if x.valid?
-      x.save
-      p x
-    else
-      p x.errors.full_messages
-    end
-end
+# 2.times do
+#     x = Order.new(
+#         items:['cheeseburger','Arepas'],
+#         discount: 0,
+#         latitude: -1.198300,
+#         longitude: 36.801060,
+#         restaurant_id: 1,
+#         customer_id: 1,
+#         food_id: [7,6],
+#         service_fee: 50,
+#         total: 1200,
+#     )
+#     if x.valid?
+#       x.save
+#       p x
+#     else
+#       p x.errors.full_messages
+#     end
+# end
+
+#Seed data for the "inventories" table
+# inventories_data = [
+#   { item: "Potatoes", quantity: 50, restaurant_id: 1 },
+#   { item: "Tomatoes", quantity: 30, restaurant_id: 1 },
+#   { item: "Carots", quantity: 20, restaurant_id: 1 },
+#   { item: "Onions", quantity: 15, restaurant_id: 1 },
+# ]
+
+# # Create the inventories records in the database
+# inventories_data.each do |inventory_data|
+#   Inventory.create!(inventory_data)
+# end
+
+# Seed data for the "fav_foods" table
+# fav_foods_data = [
+#   { customer_id: 1, food_id: 1 },
+#   { customer_id: 1, food_id: 2 },
+#   { customer_id: 2, food_id: 3 },
+#   { customer_id: 2, food_id: 4 },
+#   # Add more data as needed
+# ]
+
+# # Create the fav_foods records in the database
+# fav_foods_data.each do |fav_food_data|
+#   FavFood.create!(fav_food_data)
+# end
+
+
 
 puts "Seeding Data ...✅✅✅"	
