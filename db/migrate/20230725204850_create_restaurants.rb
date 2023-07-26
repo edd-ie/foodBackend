@@ -6,7 +6,6 @@ class CreateRestaurants < ActiveRecord::Migration[7.0]
       t.string :password_digest
       t.integer :phone
       t.boolean :policy
-      t.string :picture
       t.string :location
       t.integer :pay_bill
       t.integer :till_num
