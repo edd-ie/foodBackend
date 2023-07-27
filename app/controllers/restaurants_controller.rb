@@ -13,8 +13,8 @@ class RestaurantsController < ApplicationController
     end
 
     def create
-        customer = Restaurant.create!(valid_params)
-        render json: Restaurant, status: :created
+        restaurant = Restaurant.create!(valid_params)
+        render json: restaurant, status: :created
     end
 
     def update

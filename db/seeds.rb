@@ -18,5 +18,62 @@ puts "Seeding Data ...🌱🌱🌱"
 #     latitude: -1.298300, longitude: 36.801060
 # )
 
+cat = ['Burgers', 'Fries', 'Sides', 'Main', 'Desserts']
+n = 0
+# 5.times do
+#     Food.create(
+#         name: Faker::Food.dish,
+#         price: 100*(n+1),
+#         category: cat[n],
+#         vegetarian: false,
+#         allergen: false,
+#         restaurant_id: 1,
+#         picture: "https://th.bing.com/th/id/OIP.SKcexVoRNnffvOMny6sSvAHaDt?pid=ImgDet&rs=1",
+#         ingredients: Faker::Food.description,
+#         discount: 0,
+#         sales: n*2,
+#         ratings: 4
+#     )
+#     n+=1
+# end
+
+# n = 0
+# 2.times do
+#     Food.create(
+#         name: Faker::Food.dish,
+#         price: 250*(n+1),
+#         category: cat[n],
+#         vegetarian: true,
+#         allergen: true,
+#         restaurant_id: 1,
+#         picture: "https://th.bing.com/th/id/OIP.SKcexVoRNnffvOMny6sSvAHaDt?pid=ImgDet&rs=1",
+#         ingredients: Faker::Food.description,
+#         discount: 0,
+#         sales: (n+1)*3,
+#         ratings: 4
+#     )
+#     n+=1
+# end
+
+
+2.times do
+    x = Order.new(
+        items:['cheeseburger','Arepas'],
+        discount: 0,
+        latitude: -1.198300,
+        longitude: 36.801060,
+        restaurant_id: 1,
+        customer_id: 1,
+        food_id: [7,6],
+        service_fee: 50,
+        total: 1200,
+    )
+    if x.valid?
+      x.save
+      p x
+    else
+      p x.errors.full_messages
+    end
+end
 
 puts "Seeding Data ...✅✅✅"	
