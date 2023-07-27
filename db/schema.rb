@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_160417) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_165044) do
   create_table "customers", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -81,6 +81,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_160417) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.text "items"
+    t.float "discount"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "customer_id"
+    t.integer "restaurant_id"
+    t.text "food_id"
+    t.integer "service_fee"
+    t.float "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -109,9 +123,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_160417) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
-    t.string "password_digest"
-    t.index ["email"], name: "index_staffs_on_email"
   end
 
 end
