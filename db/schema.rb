@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_165044) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_27_084321) do
   create_table "customers", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -32,6 +32,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_165044) do
   create_table "fav_restaurants", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "restaurant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "food_reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "food_id"
+    t.integer "customer_id"
+    t.integer "likes"
+    t.integer "dislikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -91,6 +101,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_165044) do
     t.text "food_id"
     t.integer "service_fee"
     t.float "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurant_reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "restaurant_id"
+    t.integer "customer_id"
+    t.integer "likes"
+    t.integer "dislikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
