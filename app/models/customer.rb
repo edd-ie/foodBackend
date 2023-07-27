@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
     has_many :order_tracks
     has_many :fav_foods
     has_many :fav_restaurants
+    has_many :order_tracks, through: :orders
 
     validates :username, :email, uniqueness: true, presence: true
     validates :password, :password_confirmation, :phone, presence: true
