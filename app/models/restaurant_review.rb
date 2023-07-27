@@ -1,2 +1,6 @@
 class RestaurantReview < ApplicationRecord
-end
+
+    belongs_to :restaurant
+    belongs_to :customer
+
+  end
