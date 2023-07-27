@@ -1,10 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
+
 puts "Seeding Data ...🌱🌱🌱"
 
 # Customer.create(username: "User1", email: "user1@gmail.com", password: "1234", password_confirmation: "1234",
@@ -56,24 +53,24 @@ n = 0
 # end
 
 
-2.times do
-    x = Order.new(
-        items:['cheeseburger','Arepas'],
-        discount: 0,
-        latitude: -1.198300,
-        longitude: 36.801060,
-        restaurant_id: 1,
-        customer_id: 1,
-        food_id: [7,6],
-        service_fee: 50,
-        total: 1200,
-    )
-    if x.valid?
-      x.save
-      p x
-    else
-      p x.errors.full_messages
-    end
-end
+# 2.times do
+#     x = Order.new(
+#         items:['cheeseburger','Arepas'],
+#         discount: 0,
+#         latitude: -1.198300,
+#         longitude: 36.801060,
+#         restaurant_id: 1,
+#         customer_id: 1,
+#         food_id: [7,6],
+#         service_fee: 50,
+#         total: 1200,
+#     )
+#     if x.valid?
+#       x.save
+#       p x
+#     else
+#       p x.errors.full_messages
+#     end
+# end
 
 puts "Seeding Data ...✅✅✅"	

@@ -1,12 +1,12 @@
 class Restaurant < ApplicationRecord
     has_secure_password
-    has_many :foods
-    has_many :orders
-    has_many :fav_restaurants
-    has_many :inventories
-    has_many :loyalties
-    has_many :staffs
-    has_many :order_tracks
+    has_many :foods, dependent: :destroy
+    has_many :orders, dependent: :destroy
+    has_many :fav_restaurants, dependent: :destroy
+    has_many :inventories, dependent: :destroy
+    has_many :loyalties, dependent: :destroy
+    has_many :staffs, dependent: :destroy
+    has_many :order_tracks, dependent: :destroy
 
     validates :name, :email, :phone, 
     :pay_bill, :till_num, :acc_num, :ambience, 

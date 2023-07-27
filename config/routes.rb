@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :restaurant_reviews
+  resources :food_reviews
   resources :orders
   resources :fav_foods
   resources :fav_restaurants
