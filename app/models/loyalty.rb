@@ -1,2 +1,7 @@
 class Loyalty < ApplicationRecord
-end
+    belongs_to :customer
+    belongs_to :restaurant
+  
+
+  end
+  
