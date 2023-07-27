@@ -36,3 +36,4 @@
 tmp
 db/development.sqlite3
 log/development.log
+Gemfile.lock
