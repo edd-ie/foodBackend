@@ -12,8 +12,13 @@ class Customer < ApplicationRecord
     validates :password, :password_confirmation, :phone, presence: true
     validates :policy, acceptance: { accept: [true, 'yes'] }
 
-    def orders
+    def allOrders
         customer = Customer.find(self.id)
-        customer.orders.all.where(status: "pending")
+        customer.orders.all
+    end
+
+    def activeOrders
+        customer = Customer.find(self.id)
+        customer.order_tracks.where(status: "active")
     end
 end
