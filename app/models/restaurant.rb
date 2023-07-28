@@ -7,6 +7,8 @@ class Restaurant < ApplicationRecord
     has_many :loyalties, dependent: :destroy
     has_many :staffs, dependent: :destroy
     has_many :order_tracks, dependent: :destroy
+    has_many :restaurant_reviews
+    has_many :customers, through: :restaurant_reviews
 
     validates :name, :email, :phone, 
     :pay_bill, :till_num, :acc_num, :ambience, 
