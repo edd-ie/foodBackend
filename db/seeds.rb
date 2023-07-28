@@ -15,8 +15,8 @@ puts "Seeding Data ...🌱🌱🌱"
 #     latitude: -1.298300, longitude: 36.801060
 # )
 
-cat = ['Burgers', 'Fries', 'Sides', 'Main', 'Desserts']
-n = 0
+# cat = ['Burgers', 'Fries', 'Sides', 'Main', 'Desserts']
+# n = 0
 # 5.times do
 #     Food.create(
 #         name: Faker::Food.dish,
