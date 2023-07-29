@@ -18,7 +18,6 @@ class Customer < ApplicationRecord
     end
 
     def activeOrders
-        customer = Customer.find(self.id)
-        customer.order_tracks.where(status: "active")
+        self.order_tracks.where(complete: false)
     end
 end
