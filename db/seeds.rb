@@ -100,18 +100,18 @@ puts "Seeding Data ...🌱🌱🌱"
 #   FavFood.create!(fav_food_data)
 # end
 
-Staff.create!(
-    name: "Jeevs",
-    title: "manager",
-    restaurant_id: 1,
-    active: true,
-)
-Staff.create!(
-    name: "Jeevs",
-    title: "chef",
-    restaurant_id: 1,
-    active: true,
-)
+# Staff.create!(
+#     name: "Jeeves",
+#     title: "manager",
+#     restaurant_id: 1,
+#     active: true,
+# )
+# Staff.create!(
+#     name: "Ratatouille",
+#     title: "chef",
+#     restaurant_id: 1,
+#     active: true,
+# )
 
 # OrderTrack.create!(
 #     status: "prepping",	
@@ -120,7 +120,7 @@ Staff.create!(
 #     staff_id: 1,
 #     chef_id: 2,
 #     paid: true,
-#     completed: false,
+#     complete: false,
 # )
 # OrderTrack.create!(
 #     status: "cooking",	
@@ -129,7 +129,7 @@ Staff.create!(
 #     staff_id: 1,
 #     chef_id: 2,
 #     paid: true,
-#     completed: false,
+#     complete: false,
 # )
 # OrderTrack.create!(
 #     status: "Done",	
@@ -138,7 +138,7 @@ Staff.create!(
 #     staff_id: 1,
 #     chef_id: 2,
 #     paid: true,
-#     completed: true,
+#     complete: true,
 # )
 
 puts "Seeding Data ...✅✅✅"	
