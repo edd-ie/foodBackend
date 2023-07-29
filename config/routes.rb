@@ -1,18 +1,4 @@
-Rails.application.routes.draw do
-  resources :restaurant_reviews do 
-    member do
-      post 'like'
-      post 'dislike'
-    end
-  end
-
-  resources :food_reviews do
-    member do
-      post 'like'
-      post 'dislike'
-    end
-  end
-  
+Rails.application.routes.draw do  
   resources :restaurant_reviews
   resources :food_reviews
   resources :orders
