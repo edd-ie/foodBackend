@@ -1,32 +1,41 @@
 class FavRestaurantsController < ApplicationController
-    before_action :set_customer
-  
+  rescue_from ActiveRecord::RecordNotFound, with: :no_records
+  rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
+    
+
+
+    def index
+      res = FavRestaurant.all
+      render json: res, status: :ok
+    end
     # POST /fav_restaurants
     def create
-      @fav_restaurant = @customer.favorite_restaurants.build(fav_restaurant_params)
-  
-      if @fav_restaurant.save
-        render json: @fav_restaurant, status: :created
-      else
-        render json: @fav_restaurant.errors, status: :unprocessable_entity
-      end
+      res = FavRestaurant.create!(valid_params)
+      render json: res, status: :created
     end
   
     # DELETE /fav_restaurants
     def destroy
-      @fav_restaurant = @customer.favorite_restaurants.find_by(id: params[:id])
-      @fav_restaurant&.destroy
+      finder.destroy
       head :no_content
     end
   
     private
-  
-    def set_customer
-      @customer = Customer.find(params[:customer_id])
+
+    def finder
+        FavRestaurant.find(params[:id])
     end
-  
-    def fav_restaurant_params
-      params.require(:fav_restaurant).permit(:restaurant_id)
+
+    def valid_params
+        params.permit(:id, :customer_id, :restaurant_id)
+    end
+
+    def no_records
+        render json: {error: 'FavRestaurant not found'}, status: :not_found
+    end
+
+    def unprocessable(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
   end
   
