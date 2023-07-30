@@ -35,7 +35,7 @@ class InventoriesController < ApplicationController
     end
   
     def inventory_params
-      params.require(:inventory).permit(:item, :quantity)
+      params.permit(:item, :restaurant_id, :quantity)
     end
   
     def no_records

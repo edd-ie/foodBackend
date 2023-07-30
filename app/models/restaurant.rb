@@ -16,6 +16,26 @@ class Restaurant < ApplicationRecord
     :longitude, presence: true
 
     validates :policy, acceptance: { accept: [true, 'yes'] }
-
     validates :email, uniqueness: true
+
+    def allOrders
+        self.orders_tracks.all
+    end
+
+    def activeOrders
+        self.orders_tracks.where(complete: false)
+    end
+
+    def activeStaff
+        self.staffs.where(active: true)
+    end
+
+    def allStaff
+        self.staffs.all
+    end
+    
+    def menu
+        self.foods.all
+    end
 end
+

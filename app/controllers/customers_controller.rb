@@ -1,7 +1,8 @@
 class CustomersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :no_records
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
-    
+    skip_before_action :verify_authenticity_token
+
     def index
         customers = Customer.all
         render json: customers
@@ -28,6 +29,37 @@ class CustomersController < ApplicationController
         head :no_content
     end
 
+    def orders
+        orders = finder.allOrders
+        render json: orders, status: :ok
+    end
+
+    def activeOrders
+        orders = finder.activeOrders
+        render json: orders, status: :ok
+    end
+
+    def favRes
+        favRes = finder.favRes
+        render json: favRes, status: :ok
+    end
+    
+    def favFoods
+        favFoods = finder.favFoods
+        render json: favFoods, status: :ok
+    end
+
+    def newFavRes
+        restaurant = finder.newRes(params[:restaurant_id])
+        render json: restaurant, status: :created
+    end
+    
+    def newFavFood
+        food = finder
+        food.newFood(params[:food_id])
+        render json: food, status: :created
+    end
+
 
     private
 
@@ -36,7 +68,7 @@ class CustomersController < ApplicationController
     end
 
     def valid_params
-        params.permit(:id, :username, :email, :password, :password_confirmation, :phone, :policy, :picture)
+        params.permit(:id, :username, :email, :password, :password_confirmation, :phone, :policy, :picture, :food_id,:restaurant_id)
     end
 
     def no_records

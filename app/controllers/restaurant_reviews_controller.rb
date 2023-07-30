@@ -1,40 +1,47 @@
 class RestaurantReviewsController < ApplicationController
-    before_action :set_restaurant_review, only: [:show, :update, :destroy]
+    rescue_from ActiveRecord::RecordNotFound, with: :no_records
+    rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
   
-    # GET /restaurant_reviews
     def index
-      @restaurant_reviews = RestaurantReview.all
-      render json: @restaurant_reviews
+      restaurant_reviews = RestaurantReview.all
+      render json: restaurant_reviews
     end
   
-    # GET /restaurant_reviews/:id
     def show
-      render json: @restaurant_review
+      render json: @restaurant_review, status: :ok
     end
   
-    # POST /restaurant_reviews
     def create
       @restaurant_review = RestaurantReview.new(restaurant_review_params)
+  
       if @restaurant_review.save
         render json: @restaurant_review, status: :created
       else
-        render json: @restaurant_review.errors, status: :unprocessable_entity
+        render json: { errors: @restaurant_review.errors.full_messages }, status: :unprocessable_entity
       end
     end
   
-    # PATCH/PUT /restaurant_reviews/:id
     def update
       if @restaurant_review.update(restaurant_review_params)
-        render json: @restaurant_review
+        render json: @restaurant_review, status: :accepted
       else
-        render json: @restaurant_review.errors, status: :unprocessable_entity
+        render json: { errors: @restaurant_review.errors.full_messages }, status: :unprocessable_entity
       end
     end
   
-    # DELETE /restaurant_reviews/:id
     def destroy
       @restaurant_review.destroy
-      render json: { message: "Restaurant review deleted successfully" }
+      head :no_content
+    end
+  
+    def like
+      @restaurant_review.increment!(:likes)
+      render json: @restaurant_review, status: :ok
+    end
+  
+    def dislike
+      @restaurant_review.increment!(:dislikes)
+      render json: @restaurant_review, status: :ok
     end
   
     private
@@ -46,5 +53,13 @@ class RestaurantReviewsController < ApplicationController
     def restaurant_review_params
       params.require(:restaurant_review).permit(:comment, :restaurant_id, :customer_id, :likes, :dislikes)
     end
-  end
+  
+    def no_records
+      render json: { error: 'Restaurant Review not found' }, status: :not_found
+    end
+  
+    def unprocessable(invalid)
+      render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+end
   
