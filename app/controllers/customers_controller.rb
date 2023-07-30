@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :no_records
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
-    
+    skip_before_action :verify_authenticity_token
 
     def index
         customers = Customer.all

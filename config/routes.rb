@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   resources :restaurant_reviews
   resources :food_reviews
   resources :orders
-  resources :fav_foods
-  resources :fav_restaurants
   resources :foods
   resources :order_tracks
   resources :staffs
@@ -16,6 +14,9 @@ Rails.application.routes.draw do
   resources :loyalties
   resources :restaurants
   resources :customers
+  resources :fav_foods
+  resources :fav_restaurants
+  
 
   # Auxiliary routes
   

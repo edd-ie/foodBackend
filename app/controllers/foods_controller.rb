@@ -18,8 +18,7 @@ class FoodsController < ApplicationController
     end
 
     def update
-        food = finder
-        Food.update!(valid_params)
+        food = finder.update!(valid_params)
         render json: food, status: :accepted
     end
 
@@ -45,6 +44,6 @@ class FoodsController < ApplicationController
     end
 
     def unprocessable(invalid)
-        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end

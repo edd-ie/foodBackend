@@ -1,25 +1,28 @@
 class FavRestaurantsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :no_records
-  rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
-    
-
+    rescue_from ActiveRecord::RecordNotFound, with: :no_records
+    rescue_from ActiveRecord::RecordInvalid, with: :unprocessable
 
     def index
-      res = FavRestaurant.all
-      render json: res, status: :ok
+        fav_restaurants = FavRestaurant.all
+        render json: fav_restaurants, status: :ok
     end
-    # POST /fav_restaurants
-    def create
-      res = FavRestaurant.create!(valid_params)
-      render json: res, status: :created
+
+    def show
+        render json: finder, status: :ok
     end
-  
-    # DELETE /fav_restaurants
+
     def destroy
-      finder.destroy
-      head :no_content
+        finder.destroy
+        head :no_content
     end
-  
+
+    def create
+        record = FavRestaurant.create(valid_params)
+        render json: record, status: :created
+    end
+
+
+
     private
 
     def finder
@@ -31,11 +34,11 @@ class FavRestaurantsController < ApplicationController
     end
 
     def no_records
-        render json: {error: 'FavRestaurant not found'}, status: :not_found
+        render json: {error: 'Record not found'}, status: :not_found
     end
 
     def unprocessable(invalid)
-        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: invalid.record.errors.full_message}, status: :unprocessable_entity
     end
-  end
-  
+
+end
