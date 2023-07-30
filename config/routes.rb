@@ -1,18 +1,9 @@
 Rails.application.routes.draw do
-  resources :restaurant_reviews do 
-    member do
-      post 'like'
-      post 'dislike'
-    end
-  end
+  # root routes
+  root "fallback#home"
+  get "*path", to: "fallback#error", constraints: ->(req) { !req.xhr? && req.format.html? }
 
-  resources :food_reviews do
-    member do
-      post 'like'
-      post 'dislike'
-    end
-  end
-  
+  # main routes
   resources :restaurant_reviews
   resources :food_reviews
   resources :orders
@@ -25,8 +16,17 @@ Rails.application.routes.draw do
   resources :loyalties
   resources :restaurants
   resources :customers
-  root "fallback#home"
-  get "*path", to: "fallback#error", constraints: ->(req) { !req.xhr? && req.format.html? }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Defines the root path route ("/")
+
+  # Auxiliary routes
+  
+  #### Customer
+  get "/customer/orders/:id", to: "customers#orders"
+  get "/customer/activeOrders/:id", to: "customers#activeOrders"
+  post "/customer/order", to: "orders#create"
+  
+  get "/customer/favRes/:id", to: "customers#favRes"
+  post "/customer/newRes/:id", to: "customers#newFavRes"
+  
+  get "/customer/favFoods/:id", to: "customers#favFoods"
+  post "/customer/newFood/:id", to: "customers#newFavFood"
 end
