@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :m_pesas
   # root routes
   root "fallback#home"
   get "*path", to: "fallback#error", constraints: ->(req) { !req.xhr? && req.format.html? }
