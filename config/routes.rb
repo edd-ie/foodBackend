@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :callback_urls
   resources :m_pesas
   # root routes
   root "fallback#home"
