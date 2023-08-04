@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_115454) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_04_080701) do
+  create_table "access_tokens", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "token"
+  end
+
+  create_table "application_records", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "callback_urls", force: :cascade do |t|
+    t.string "transaction_type"
+    t.date "trans_time"
+    t.integer "trans_amount"
+    t.integer "bill_ref_number"
+    t.integer "msisdn"
+    t.integer "business_shortcode"
+    t.integer "trans_id"
+    t.string "resultcode"
+    t.integer "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_callback_urls_on_customer_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -77,6 +103,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_115454) do
     t.boolean "used"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mpesas", force: :cascade do |t|
+    t.string "checkoutRequestID"
+    t.string "merchantRequestID"
+    t.string "amount"
+    t.string "mpesaReceiptNumber"
+    t.string "phoneNumber"
+    t.integer "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_mpesas_on_customer_id"
   end
 
   create_table "order_tracks", force: :cascade do |t|
@@ -146,4 +184,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_115454) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "callback_urls", "customers"
+  add_foreign_key "mpesas", "customers"
 end

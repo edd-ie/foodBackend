@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :access_tokens
+  resources :callback_urls
+  resources :mpesas
   # root routes
   root "fallback#home"
   get "*path", to: "fallback#error", constraints: ->(req) { !req.xhr? && req.format.html? }
@@ -30,4 +33,8 @@ Rails.application.routes.draw do
   
   get "/customer/favFoods/:id", to: "customers#favFoods"
   post "/customer/newFood/:id", to: "customers#newFavFood"
+
+  # for mpesa
+  post '/stkpush', to: 'm_pesas#stkpush'
+  post '/callback_url', to: 'm_pesas#callback'
 end
