@@ -21,6 +21,7 @@ gem "jbuilder"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -63,3 +64,7 @@ end
 gem "active_model_serializers", "~> 0.10.13"
 
 gem "rack-cors", "~> 2.0"
+
+gem "faker", "~> 3.2"
+
+gem "rest-client", "~> 2.1"
