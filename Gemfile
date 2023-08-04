@@ -66,3 +66,5 @@ gem "active_model_serializers", "~> 0.10.13"
 gem "rack-cors", "~> 2.0"
 
 gem "faker", "~> 3.2"
+
+gem "rest-client", "~> 2.1"
