@@ -23,7 +23,7 @@ class MPesasController < ApplicationController
             'PartyA': phoneNumber,
             'PartyB': business_short_code,
             'PhoneNumber': phoneNumber,
-            'CallBackURL': "https://1b17-102-220-169-34.ngrok-free.app/callback",
+            'CallBackURL':  "https://f838-197-139-44-10.ngrok-free.app/callback",
             'AccountReference': 'FOOD CHAP CHAP',
             'TransactionDesc': "ROR trial"
         }.to_json
